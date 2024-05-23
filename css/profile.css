@@ -1,0 +1,62 @@
+body{
+    background-color: #18191B;
+}
+
+.profile-welcome{
+    background: linear-gradient(135deg, #F13A11, #F56F3A, #FAA760);
+    color: white;
+}
+
+.profile-data{
+    background-color: #fff;
+}
+
+.btn-form{
+    width: 150px !important;
+
+}
+
+.btn-form:focus{
+    outline: none;
+}
+
+span{
+    margin-bottom: 20px;
+}
+
+.btn-prof{
+    height: 25px !important;
+    border: 0;
+    color: white;
+    background-color: #1D2124;
+    border-radius: 5px;
+}
+
+.btn-prof:focus{
+    border: 0;
+    outline: 0;
+}
+
+.imc-camp{
+    padding-top: 10px;
+}
+
+.select-clases{
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #c6c8ca;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.select-clases:focus{
+    outline: 0;
+}
+
+.class-reserv{
+    display: none;
+}
+
+.select-day:focus{
+    outline: 0;
+}
