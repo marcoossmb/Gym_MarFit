@@ -15,6 +15,13 @@ class ClaseController {
 
     public function mostrarEleccionClases() {
 
+        session_start();
+
+        if (!isset($_SESSION['id_usuario'])) {
+            header("Location: ./index.php");
+            exit();
+        }
+
         // Obtener los vuelos del servicio y decodificar el JSON
         $clases = json_decode($this->service->allClases(), true);
 
@@ -31,6 +38,45 @@ class ClaseController {
 
     public function verMonitorClases() {
 
+        session_start();
+
+        if (!isset($_SESSION['id_monitor'])) {
+            header("Location: ./index.php");
+            exit();
+        }
+
         $this->view->verMonitorClases();
+    }
+
+    public function reservarClase() {
+
+        session_start();
+
+        if (!isset($_SESSION['id_usuario'])) {
+            header("Location: ./index.php?controller=Login&action=mostrarLogin");
+            exit();
+        }
+
+        //Cojo el id de la clase a partir del nombre
+        $title = $_POST['clase'];
+        //Paso el json a string
+        $json_response = $this->service->oneClaseByTitle($title);
+        $response_array = json_decode($json_response, true);
+
+        //Lo guardo en la variable id_clase
+        $id_clase = $response_array['id_clase'];
+
+        //Defino las demás variables
+        $start = $_POST['date'];
+        $hora_clase = $_POST['time'];
+        $id_usuario = $_SESSION['id_usuario'];
+
+        $insertaReserva = $this->service->reservarClase($id_usuario, $id_clase, $start, $hora_clase);
+
+        if ($insertaReserva['resultado'] == 'Ya has realizado esta reserva') {
+            header("Location: ./index.php?controller=Home&action=mostrarHome&reserva=false");
+        } else {
+            header("Location: ./index.php?controller=Home&action=mostrarHome&reserva=true");
+        }
     }
 }

@@ -1,5 +1,6 @@
 body{
     background-color: #18191B;
+    background-image: url('../assets/images/class-bg.jpg');
 }
 
 .profile-welcome{
@@ -41,6 +42,15 @@ span{
     padding-top: 10px;
 }
 
+.class-info {
+    background: white;
+    box-shadow: 6px 0 38px rgba(20,20,20,0.10);
+    border-radius: 0 0 2px 2px;
+    padding: 1rem 2rem;
+    position: relative;
+    margin-top: 90px;
+}
+
 .select-clases{
     text-align: center;
     padding: 10px;
@@ -58,5 +68,9 @@ span{
 }
 
 .select-day:focus{
+    outline: 0;
+}
+
+.select-hour:focus{
     outline: 0;
 }

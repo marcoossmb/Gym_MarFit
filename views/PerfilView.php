@@ -8,7 +8,7 @@ class PerfilView {
         ?>
         <link rel="stylesheet" href="css/profile.css">
         <div class="profile">
-            <div class="profile-welcome mt-4 p-5">
+            <div class="profile-welcome p-5">
                 <div class="container">
                     <h1>Hola <?php echo $nuevouser->getNombre(); ?></h1>
                     <p class="text-light">A continuación, encontrarás los datos personales que nos ha facilitado.</p>

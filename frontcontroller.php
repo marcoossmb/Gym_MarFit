@@ -9,7 +9,7 @@ include './services/ClaseService.php';
 include './controllers/HomeController.php';
 include './controllers/LoginController.php';
 include './controllers/PerfilController.php';
-    include './controllers/ClaseController.php';
+include './controllers/ClaseController.php';
 
 // Incluyo todos las vistas
 include './views/HomeView.php';

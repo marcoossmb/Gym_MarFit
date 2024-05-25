@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     selectElement.addEventListener('change', (event) => {
         const claseId = event.target.value;
-        //const classReserv = document.querySelector('.class-reserv');
 
         if (claseId) {
             fetch(`http://localhost/_servWeb/restfulApiGymMarFit/Clases.php?id_clase=${claseId}`)
@@ -12,27 +11,36 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         // Mostrar la información de la clase debajo del select
                         const classInfoDiv = document.querySelector('.class-description');
                         classInfoDiv.innerHTML = `
-                            <hr class="mt-5">
-                            <div class="container mt-5 mb-5">
-                                <div class="d-flex">
-                                    <div class="col-7">
-                                        <h2 class="mb-4">Información de la Clase</h2>
-                                        <p><strong>Nombre:</strong> ${data.title}</p>
-                                        <p><strong>Descripción:</strong> ${data.descripcion}</p>
-                                        <p><strong>Duracion:</strong> ${data.duracion} min</p>
-                                        <p><strong>Monitor/a:</strong> ${data.moninombre} ${data.moniapellido}</p>
-                                    </div>
-                                    <div  class="col-4">
-                                        <img src="./assets/images/class/${data.title}.jpg" class="img-fluid" alt="clase">
-                                    </div>
+                        <hr class="mt-5">
+                        <div class="container mt-5 mb-5">
+                            <div class="d-flex">
+                                <div class="col-7">
+                                    <h2 class="mb-4">Información de la Clase</h2>
+                                    <p><strong>Nombre:</strong> ${data.title}</p>
+                                    <p><strong>Descripción:</strong> ${data.descripcion}</p>
+                                    <p><strong>Duracion:</strong> ${data.duracion} min</p>
+                                    <p><strong>Monitor/a:</strong> ${data.moninombre} ${data.moniapellido}</p>
                                 </div>
-                            </div><hr class="mt-5">
-                            <form id="reservaForm" method="POST" action="#">
-                                ${generateDateOptions(data.title)}
-                                <input type="submit" class="btn btn-dark" value="Reservar">
-                            </form>
-                        `;
-                        //classReserv.style.display = "block";
+                                <div class="col-4">
+                                    <img src="./assets/images/class/${data.title}.jpg" class="img-fluid rounded" alt="clase">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-5">
+                        <form id="reservaForm" method="POST" action="./index.php?controller=Clase&action=reservarClase">
+                            ${generateDateOptions(data.title)}
+                            <div id="time-container"></div>
+                            <input type="hidden" value="${data.title}" name="clase">
+                            <input type="submit" class="btn btn-dark mt-3" value="Reservar">
+                        </form>
+                    `;
+
+                        const dateSelect = document.querySelector('#date');
+                        dateSelect.addEventListener('change', (event) => {
+                            const selectedDate = new Date(event.target.value);
+                            const selectedDay = selectedDate.getDay();
+                            document.querySelector('#time-container').innerHTML = generateTimeOptions(data.title, selectedDay);
+                        });
                     })
                     .catch(error => console.error('Error fetching class info:', error));
         }
@@ -60,7 +68,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const oneMonthFromNow = new Date();
         oneMonthFromNow.setMonth(today.getMonth() + 1);
 
-        let dateOptions = '<p>Selecciona una fecha:</p> <select class="border-0 select-day" name="date" id="date" required><option selected disabled value="">Fecha</option>';
+        let dateOptions = '<p>Selecciona una fecha:</p> <select class="border-0 select-day mr-5" name="date" id="date" required><option selected disabled value="">Fecha</option>';
         for (let d = new Date(today); d <= oneMonthFromNow; d.setDate(d.getDate() + 1)) {
             const day = d.getDay();
             if (validDays.includes(day)) {
@@ -76,5 +84,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function getDayName(day) {
         const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
         return days[day];
+    }
+
+    function generateTimeOptions(className, day) {
+        let timeOptions = '<p class="mt-3">Horas disponibles:</p> <select class="border-0 select-hour mr-5" name="time" id="time" required><option selected disabled value="">Hora</option>';
+
+        const timeSlots = {
+            'Yoga': {1: ['16:00'], 5: ['08:00']},
+            'Cardio': {1: ['08:00'], 4: ['17:30'], 6: ['09:00']},
+            'Boxeo': {2: ['12:00'], 3: ['10:15']},
+            'Spinning': {2: ['09:00'], 3: ['12:30']},
+            'Zumba': {2: ['16:30'], 4: ['10:00']},
+            'Pilates': {5: ['12:50'], 6: ['13:00']}
+        };
+
+        if (timeSlots[className] && timeSlots[className][day]) {
+            timeSlots[className][day].forEach(time => {
+                timeOptions += `<option value="${time}">${time}</option>`;
+            });
+        } else {
+            timeOptions += `<option selected disabled value="">No hay horas disponibles</option>`;
+        }
+
+        timeOptions += '</select>';
+        return timeOptions;
     }
 });

@@ -80,21 +80,20 @@ class HomeView {
 
                     <div class="ml-lg-auto col-lg-3 col-md-6 col-12">
                         <div class="team-thumb">
-                            <img src="assets/images/team/team-image.jpg" class="img-fluid" alt="Entrenador">
+                            <img src="assets/images/team/team-image03.jpg" class="img-fluid rounded" alt="Entrenador">
                             <div class="team-info d-flex flex-column">
                                 <h3>Sara López</h3>
-                                <span>Instructor de Spinning</span>
+                                <span>Instructora de Pilates</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12">
                         <div class="team-thumb">
-                            <img src="assets/images/team/team-image01.jpg" class="img-fluid" alt="Entrenador">
-
+                            <img src="assets/images/team/team-image02.jpg" class="img-fluid rounded" alt="Entrenador">
                             <div class="team-info d-flex flex-column">
                                 <h3>Laura García</h3>
-                                <span>Entrenador de Boxeo</span>
+                                <span>Entrenadora de Boxeo</span>
                             </div>
                         </div>
                     </div>
@@ -110,8 +109,7 @@ class HomeView {
 
                     <div class="col-lg-12 col-12 text-center">
                         <h6>Nuestros horarios semanales de GYM</h6>
-
-                        <h2 class="text-white">Horario de Entrenamiento</h2>
+                        <h2 class="text-white">Horario de Clases</h2>
                     </div>
 
                     <div class="col-lg-12 py-5 col-md-12 col-12">
@@ -272,6 +270,14 @@ class HomeView {
                 generarAlerta("fa-check", "Se ha enviado el correo correctamente", "success");
             } else {
                 generarAlerta("fa-x", "Error al enviar el correo, intentelo más tarde", "danger");
+            }
+        }
+
+        if (isset($_GET['reserva'])) {
+            if ($_GET['reserva'] == 'true') {
+                generarAlerta("fa-check", "Se ha realizado la reserva correctamente", "success");
+            } else {
+                generarAlerta("fa-x", "Ya has realizado esa misma reserva para ese mismo día", "danger");
             }
         }
     }

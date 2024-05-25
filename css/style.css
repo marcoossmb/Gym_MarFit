@@ -215,7 +215,7 @@ a:focus {
 }
 
 .hero {
-    background-image: url('../assets/images/hero-bg.jpg');
+    background-image: url('../assets/images/hero-bg3.jpg');
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -453,13 +453,4 @@ button#submit-button:hover {
 
 .logo-img{
     width: 50px;
-}
-
-.class-info {
-    background: white;
-    box-shadow: 6px 0 38px rgba(20,20,20,0.10);
-    border-radius: 0 0 2px 2px;
-    padding: 1rem 2rem;
-    position: relative;
-    margin-top: 90px; 
 }

@@ -32,7 +32,7 @@ class LoginController {
             $usuarioData = json_decode($usuarioLogin, true);
 
             // Crear un objeto Usuario con la información obtenida
-            $nuevouser = new Usuario($usuarioData['id_usuario'], $usuarioData['username'], $usuarioData['password'], $usuarioData['nombre'], $usuarioData['apellido'], $usuarioData['email'], $usuarioData['fecha_nacim'], $usuarioData['rol'], $usuarioData['id_monitor'], $usuarioData['imc']);
+            $nuevouser = new Usuario(isset($usuarioData['id_usuario']) ? $usuarioData['id_usuario'] : $usuarioData['id_monitor'], $usuarioData['username'], $usuarioData['password'], $usuarioData['nombre'], $usuarioData['apellido'], $usuarioData['email'], isset($usuarioData['fecha_nacim']) ? $usuarioData['fecha_nacim'] : $usuarioData['fecha_nac'], $usuarioData['rol'], $usuarioData['imc']);
 
             // Iniciar sesión y establecer variables de sesión con la información del usuario
             session_start();

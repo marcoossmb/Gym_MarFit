@@ -12,11 +12,10 @@ class Usuario {
     private $email;
     private $fecha_nacim;
     private $rol;
-    private $id_monitor;
     private $imc;
 
     // Método constructor
-    public function __construct($id_usuario, $username, $password, $nombre, $apellido, $email, $fecha_nacim, $rol, $id_monitor, $imc) {
+    public function __construct($id_usuario, $username, $password, $nombre, $apellido, $email, $fecha_nacim, $rol, $imc) {
         $this->id_usuario = $id_usuario;
         $this->username = $username;
         $this->password = $password;
@@ -25,7 +24,6 @@ class Usuario {
         $this->email = $email;
         $this->fecha_nacim = $fecha_nacim;
         $this->rol = $rol;
-        $this->id_monitor = $id_monitor;
         $this->imc = $imc;
     }
 
@@ -62,10 +60,6 @@ class Usuario {
         return $this->rol;
     }
 
-    public function getId_monitor() {
-        return $this->id_monitor;
-    }
-
     public function getImc() {
         return $this->imc;
     }
@@ -100,10 +94,6 @@ class Usuario {
 
     public function setRol($rol): void {
         $this->rol = $rol;
-    }
-
-    public function setId_monitor($id_monitor): void {
-        $this->id_monitor = $id_monitor;
     }
 
     public function setImc($imc): void {
