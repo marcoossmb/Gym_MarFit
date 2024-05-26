@@ -20,6 +20,7 @@ include './views/ClaseView.php';
 // Incluyo todos los objetos
 include './services/models/Usuario.php';
 include './services/models/Clase.php';
+include './services/models/Monitor.php';
 
 // Define la acción por defecto
 define('ACCION_DEFECTO', 'mostrar');

@@ -56,18 +56,17 @@ class PerfilView {
                             <?php
                             if ($nuevouser->getImc() == 0) {
                                 ?>
-                                <form action="./index.php?controller=Perfil&action=calcularImc" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $nuevouser->getId_usuario(); ?>">
+                                <form action="<?php echo $_SESSION['rol'] == 0 ? './index.php?controller=Perfil&action=calcularImc' : './index.php?controller=Perfil&action=calcularImcMonitor' ?>" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo isset($_SESSION['id_usuario']) ? $_SESSION['id_usuario'] : $_SESSION['id_monitor'] ?>">
                                     <div class="form-row">
                                         <div class="col">
-                                            <input class="border-0 btn-form" type="number" placeholder="Peso, ej:77" name="peso" min="60" max="700" required>
+                                            <input class="border-0 btn-form" type="number" placeholder="Peso, ej:77" name="peso" min="30" max="700" required>
                                         </div>
                                         <div class="col">
-                                            <input class="border-0 btn-form" type="number" placeholder="Altura, ej:181" name="altura" min="30" max="300" required>
+                                            <input class="border-0 btn-form" type="number" placeholder="Altura, ej:181" name="altura" min="60" max="300" required>
                                         </div>
                                         <div class="col"><button type="submit" class="btn-prof">Calcular</button></div>
                                     </div>
-
                                 </form>
                                 <?php
                             } else {
@@ -91,14 +90,14 @@ class PerfilView {
                 if ($nuevouser->getImc() != 0) {
                     ?>
                     <h4>Actualizar peso y altura</h4>  
-                    <form action="./index.php?controller=Perfil&action=calcularImc" method="POST">
-                        <input type="hidden" name="id" value="<?php echo $nuevouser->getId_usuario(); ?>">
+                    <form action="<?php echo $_SESSION['rol'] == 0 ? './index.php?controller=Perfil&action=calcularImc' : './index.php?controller=Perfil&action=calcularImcMonitor' ?>" method="POST">
+                        <input type="hidden" name="id" value="<?php echo isset($_SESSION['id_usuario']) ? $_SESSION['id_usuario'] : $_SESSION['id_monitor'] ?>">
                         <div class="form-row">
                             <div class="col">
-                                <input class="border-0 btn-form" type="number" placeholder="Peso, ej:77" name="peso" min="60" max="700" required>
+                                <input class="border-0 btn-form" type="number" placeholder="Peso, ej:77" name="peso" min="30" max="700" required>
                             </div>
                             <div class="col">
-                                <input class="border-0 btn-form" type="number" placeholder="Altura, ej:181" name="altura" min="30" max="300" required>
+                                <input class="border-0 btn-form" type="number" placeholder="Altura, ej:181" name="altura" min="60" max="300" required>
                             </div>
                             <div class="col"><button type="submit" class="btn btn-dark mb-2">Actualizar</button></div>
                         </div>

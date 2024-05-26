@@ -79,4 +79,18 @@ class ClaseController {
             header("Location: ./index.php?controller=Home&action=mostrarHome&reserva=true");
         }
     }
+
+    public function verClasesUsuario() {
+
+        session_start();
+
+        if (!isset($_SESSION['id_usuario'])) {
+            header("Location: ./index.php");
+            exit();
+        }
+
+        $clasesPorUsuario = json_decode($this->service->request_clasesUsuario($_SESSION['id_usuario']), true);
+
+        $this->view->verClasesUsuario($clasesPorUsuario);
+    }
 }

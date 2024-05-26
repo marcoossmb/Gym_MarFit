@@ -31,19 +31,25 @@ class LoginController {
             // Decodificar el JSON en un array asociativo
             $usuarioData = json_decode($usuarioLogin, true);
 
-            // Crear un objeto Usuario con la información obtenida
-            $nuevouser = new Usuario(isset($usuarioData['id_usuario']) ? $usuarioData['id_usuario'] : $usuarioData['id_monitor'], $usuarioData['username'], $usuarioData['password'], $usuarioData['nombre'], $usuarioData['apellido'], $usuarioData['email'], isset($usuarioData['fecha_nacim']) ? $usuarioData['fecha_nacim'] : $usuarioData['fecha_nac'], $usuarioData['rol'], $usuarioData['imc']);
+            if (isset($usuarioData['id_usuario'])) {
+                // Crear un objeto Usuario con la información obtenida
+                $nuevouser = new Usuario($usuarioData['id_usuario'], $usuarioData['username'], $usuarioData['password'], $usuarioData['nombre'], $usuarioData['apellido'], $usuarioData['email'], $usuarioData['fecha_nacim'], $usuarioData['rol'], $usuarioData['imc']);
+            } else {
+                // Crear un objeto Monitor con la información obtenida
+                $nuevouser = new Monitor($usuarioData['id_monitor'], $usuarioData['username'], $usuarioData['password'], $usuarioData['nombre'], $usuarioData['apellido'], $usuarioData['email'], $usuarioData['fecha_nac'], $usuarioData['rol'], $usuarioData['imc']);
+            }
 
             // Iniciar sesión y establecer variables de sesión con la información del usuario
             session_start();
             $_SESSION['nombre'] = $nuevouser->getNombre();
             $_SESSION['rol'] = $nuevouser->getRol();
-            if ($nuevouser->getId_usuario() != '') {
+            $_SESSION['email'] = $nuevouser->getEmail();
+            if (isset($usuarioData['id_usuario'])) {
                 $_SESSION['id_usuario'] = $nuevouser->getId_usuario();
             } else {
                 $_SESSION['id_monitor'] = $nuevouser->getId_monitor();
             }
-            $_SESSION['email'] = $nuevouser->getEmail();
+
 
             header("Location: ./index.php?login=true");
         } else {

@@ -91,4 +91,25 @@ class ClaseService {
         }
         curl_close($conexion);
     }
+    
+    function request_clasesUsuario($id_usuario) {
+        $urlmiservicio = "http://localhost/_servWeb/restfulApiGymMarFit/Clases.php?id_usuario=" . $id_usuario;
+        $conexion = curl_init();
+        //Url de la petición
+        curl_setopt($conexion, CURLOPT_URL, $urlmiservicio);
+        //Tipo de petición
+        curl_setopt($conexion, CURLOPT_HTTPGET, TRUE);
+        //Tipo de contenido de la respuesta
+        curl_setopt($conexion, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+        //para recibir una respuesta
+        curl_setopt($conexion, CURLOPT_RETURNTRANSFER, true);
+
+        $res = curl_exec($conexion);
+        if ($res) {
+            return($res);
+        } else {
+            return false;
+        }
+        curl_close($conexion);
+    }
 }

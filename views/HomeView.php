@@ -50,7 +50,6 @@ class HomeView {
                     <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
                         <div class="about-working-hours">
                             <div>
-
                                 <h2 class="mb-4 text-white">Horario de trabajo</h2>
                                 <strong class="mt-3 d-block">Lunes - Viernes</strong>
                                 <p>7:00 - 23:00</p>
