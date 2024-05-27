@@ -38,13 +38,6 @@ class ClaseController {
 
     public function verMonitorClases() {
 
-        session_start();
-
-        if (!isset($_SESSION['id_monitor'])) {
-            header("Location: ./index.php");
-            exit();
-        }
-
         $this->view->verMonitorClases();
     }
 
@@ -81,7 +74,6 @@ class ClaseController {
     }
 
     public function verClasesUsuario() {
-
         session_start();
 
         if (!isset($_SESSION['id_usuario'])) {
@@ -90,6 +82,10 @@ class ClaseController {
         }
 
         $clasesPorUsuario = json_decode($this->service->request_clasesUsuario($_SESSION['id_usuario']), true);
+
+        if (!is_array($clasesPorUsuario)) {
+            $clasesPorUsuario = [];
+        }
 
         $this->view->verClasesUsuario($clasesPorUsuario);
     }

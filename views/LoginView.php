@@ -6,7 +6,6 @@ class LoginView {
     // Método para mostrar el formulario de inicio de sesión
     public function mostrarLogin() {
         include('./lib/google_account_config.php');
-        $login_button = '<a href="' . $google_client->createAuthUrl() . '">Login With Google</a>';
         ?>
         <link rel="stylesheet" href="css/loginstyle.css">
         <div class="login-reg-panel">
@@ -41,8 +40,8 @@ class LoginView {
                     </div>
                     <hr>
                     <div class="d-flex justify-content-center">
-                        <div class="d-flex justify-content-center mb-2 w-50 align-items-center" id="google-login-button">
-                            <a class="a-google btn-google rounded px-5" href="<?php echo $google_client->createAuthUrl() ?>"><i class="fa-brands fa-google"></i>&nbsp; Seguir con Google</a>
+                        <div class="d-flex justify-content-center mb-2 w-75 align-items-center" id="google-login-button">
+                            <a class="a-google btn-google rounded px-5" href="<?php echo $google_client->createAuthUrl() ?>"><i class="fa-brands fa-google"></i> Seguir con Google</a>
                         </div>
                     </div>
                 </form>

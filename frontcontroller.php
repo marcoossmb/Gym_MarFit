@@ -4,18 +4,21 @@ include './services/HomeService.php';
 include './services/LoginService.php';
 include './services/PerfilService.php';
 include './services/ClaseService.php';
+include './services/MonitorService.php';
 
 // Incluyo todos los controladores
 include './controllers/HomeController.php';
 include './controllers/LoginController.php';
 include './controllers/PerfilController.php';
 include './controllers/ClaseController.php';
+include './controllers/MonitorController.php';
 
 // Incluyo todos las vistas
 include './views/HomeView.php';
 include './views/LoginView.php';
 include './views/PerfilView.php';
 include './views/ClaseView.php';
+include './views/MonitorView.php';
 
 // Incluyo todos los objetos
 include './services/models/Usuario.php';

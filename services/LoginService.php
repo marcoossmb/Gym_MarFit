@@ -24,7 +24,7 @@ class LoginService {
         curl_close($conexion);
     }
 
-//POST Van datos, se pone el Content-Length del envío
+    //POST Van datos, se pone el Content-Length del envío
     function insertarUsuario($password, $nombre, $apellido, $email, $fecha_nacim, $username) {
         $envio = json_encode(array("password" => $password, "nombre" => $nombre, "apellido" => $apellido, "email" => $email, "fecha_nacim" => $fecha_nacim, "username" => $username));
 

@@ -45,39 +45,18 @@ class PerfilController {
         $peso = $_POST['peso'];
         $altura = $_POST['altura'];
 
-        // Convertir altura a metros
-        $altura_metros = $altura / 100;
-
         // Calcular el IMC
+        $altura_metros = $altura / 100;
         $imc = $peso / ($altura_metros * $altura_metros);
-
-        // Redondear el IMC a un decimal
         $imc = round($imc, 1);
 
         // Actualizar el IMC en la base de datos
         $this->service->updateImc($_POST['id'], $imc);
 
-        // Recargar el perfil del usuario
         $this->configurarPerfil();
     }
 
-    public function calcularImcMonitor() {
-        $peso = $_POST['peso'];
-        $altura = $_POST['altura'];
-
-        // Convertir altura a metros
-        $altura_metros = $altura / 100;
-
-        // Calcular el IMC
-        $imc = $peso / ($altura_metros * $altura_metros);
-
-        // Redondear el IMC a un decimal
-        $imc = round($imc, 1);
-
-        // Actualizar el IMC en la base de datos
-        $this->service->updateImcMonitor($_POST['id'], $imc);
-
-        // Recargar el perfil del usuario
-        $this->configurarPerfil();
+    public function verStockMaterial() {
+        
     }
 }

@@ -39,10 +39,9 @@ class ClaseView {
             header("Location: ./index.php");
         }
         require_once './components/Header/header.php';
-        ?>
-        <div class="mt-5">a</div>
+        ?>        
         <div class="container mt-5">
-            <div id='calendar' class="w-75 mx-auto mt-5" data-id-monitor="<?php echo $id_monitor; ?>"></div>
+            <div id='calendar' class="w-75 mx-auto class-mt" data-id-monitor="<?php echo $id_monitor; ?>"></div>
 
         </div>
         <script src="./js/calendar.js"></script>
@@ -51,48 +50,44 @@ class ClaseView {
 
     // Método para mostrar las clases de cada usuario
     public function verClasesUsuario($clasesPorUsuario) {
-        session_start();
-        // Verificar si el ID del monitor está presente en la sesión
-        if (isset($_SESSION['id_usuario'])) {
-            
-        } else {
-            header("Location: ./index.php");
-        }
         require_once './components/Header/header.php';
         ?>
-        <div class="mt-3">a</div>
-        <div class="container mt-5 mb-5">
+        <div class="container mt-5 mb-5 class-mt">
             <h2>Mis clases</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Clase</th>
-                        <th>Tipo</th>
-                        <th>Descripción</th>
-                        <th>Duración</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Acceder</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($clasesPorUsuario as $clase) { ?>
-                        <tr id="fila-<?php echo $clase['id_clase']; ?>">
-                            <td><?php echo $clase['title']; ?></td>
-                            <td><?php echo $clase['tipo']; ?></td>
-                            <td><?php echo $clase['descripcion']; ?></td>
-                            <td><?php echo $clase['duracion']; ?> min</td>
-                            <td><?php echo $clase['start']; ?></td>
-                            <td><?php echo substr($clase['hora_clase'], 0, 5); ?></td>
-                            <td>
-                                <button class="btn btn-primary" id="boton-<?php echo $clase['id_clase']; ?>">
-                                    <i class="fa-solid fa-qrcode"></i>
-                                </button>
-                            </td>
+            <?php if (empty($clasesPorUsuario)) { ?>
+                <p>No tienes ninguna clase reservada.</p>
+            <?php } else { ?>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Clase</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                            <th>Duración</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Acceder</th>
                         </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($clasesPorUsuario as $clase) { ?>
+                            <tr id="fila-<?php echo $clase['id_clase']; ?>">
+                                <td><?php echo $clase['title']; ?></td>
+                                <td><?php echo $clase['tipo']; ?></td>
+                                <td><?php echo $clase['descripcion']; ?></td>
+                                <td><?php echo $clase['duracion']; ?> min</td>
+                                <td><?php echo $clase['start']; ?></td>
+                                <td><?php echo substr($clase['hora_clase'], 0, 5); ?></td>
+                                <td>
+                                    <button class="btn btn-primary" id="boton-<?php echo $clase['id_clase']; ?>">
+                                        <i class="fa-solid fa-qrcode"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            <?php } ?>
             <a href="./index.php" class="btn btn-dark">Volver</a>
         </div>
         <canvas id="qrCode" class="d-none"></canvas>
