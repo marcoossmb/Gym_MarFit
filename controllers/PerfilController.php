@@ -58,5 +58,13 @@ class PerfilController {
 
     public function verStockMaterial() {
         
+        session_start();
+        
+        if ($_SESSION['rol'] != 1) {
+            header("Location: ./index.php");
+        }
+        
+        $this->view->verStockMaterial();
+        
     }
 }

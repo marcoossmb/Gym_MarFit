@@ -113,4 +113,19 @@ class PerfilView {
         <?php
         require_once './components/Footer/footer.php';
     }
+
+    public function verStockMaterial() {
+        require_once './components/Header/header.php';
+        ?>
+        <div class="container mt-5">
+            <h2 style="margin-top: 150px">Stock del material</h2>
+            <canvas id="grafica" class="mt-3"></canvas>
+            
+            <h2 style="margin-top: 125px" class="mb-5">Alumnos por clase</h2>
+            <canvas id="grafica_alum" class="mb-5"></canvas>            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+        <script src="./js/graficas.js"></script>
+        <?php
+    }
 }

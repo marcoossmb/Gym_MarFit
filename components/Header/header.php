@@ -33,7 +33,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="./index.php?controller=Perfil&action=configurarPerfil">Mi Perfil</a>
                             <?php echo ($_SESSION['rol'] == 0) ? '<a class="dropdown-item" href="./index.php?controller=Clase&action=verClasesUsuario">Mis Clases</a>' : ''; ?>
-                            <?php echo ($_SESSION['rol'] == 1) ? '<a class="dropdown-item" href="./index.php?controller=Perfil&action=verStockMaterial">Ver Stock</a>' : ''; ?>
+                            <?php echo ($_SESSION['rol'] == 1) ? '<a class="dropdown-item" href="./index.php?controller=Perfil&action=verStockMaterial">Ver Estadísticas</a>' : ''; ?>
                             <?php echo ($_SESSION['rol'] == 1) ? '<a class="dropdown-item" href="./index.php?controller=Monitor&action=gestionarMonitores">Gestionar Monitores</a>' : ''; ?>
                             <?php echo ($_SESSION['rol'] == 2) ? '<a class="dropdown-item" href="./index.php?controller=Clase&action=verMonitorClases">Ver mis clases</a>' : ''; ?>                                    
                             <a class="dropdown-item" href="./index.php?controller=Login&action=cerrarSesion">Cerrar Sesión</a>
