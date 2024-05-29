@@ -12,6 +12,7 @@ include './controllers/LoginController.php';
 include './controllers/PerfilController.php';
 include './controllers/ClaseController.php';
 include './controllers/MonitorController.php';
+include './controllers/error404Controller.php';
 
 // Incluyo todos las vistas
 include './views/HomeView.php';
@@ -19,6 +20,7 @@ include './views/LoginView.php';
 include './views/PerfilView.php';
 include './views/ClaseView.php';
 include './views/MonitorView.php';
+include './views/error404View.php';
 
 // Incluyo todos los objetos
 include './services/models/Usuario.php';

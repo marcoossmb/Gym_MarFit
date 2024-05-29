@@ -65,7 +65,7 @@ class MonitorView {
 
                     </form>
                 </div>
-                <a href="./index.php" class="btn btn-dark">Volver</a>
+                <a href="./index.php" class="btn btn-dark mb-5">Volver</a>
             </div>
         </div>
 
