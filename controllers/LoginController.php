@@ -31,6 +31,11 @@ class LoginController {
             // Decodificar el JSON en un array asociativo
             $usuarioData = json_decode($usuarioLogin, true);
 
+            if ($usuarioData == null) {
+                header("Location: http://localhost/Gym_MarFit/views/MantenimientoView.php");
+                exit();
+            }
+
             if (isset($usuarioData['id_usuario'])) {
                 // Crear un objeto Usuario con la información obtenida
                 $nuevouser = new Usuario($usuarioData['id_usuario'], $usuarioData['username'], $usuarioData['password'], $usuarioData['nombre'], $usuarioData['apellido'], $usuarioData['email'], $usuarioData['fecha_nacim'], $usuarioData['rol'], $usuarioData['imc']);
@@ -118,7 +123,6 @@ class LoginController {
     }
 
     public function procesarLoginGoogle($email) {
-        // Recupera los datos del login
 
         $usuarioLogin = $this->service->comprobarUsuarioGoogle($email);
 
@@ -126,6 +130,11 @@ class LoginController {
 
             // Decodificar el JSON en un array asociativo
             $usuarioData = json_decode($usuarioLogin, true);
+
+            if ($usuarioData == null) {
+                header("Location: http://localhost/Gym_MarFit/views/MantenimientoView.php");
+                exit();
+            }
 
             // Crear un objeto Usuario con la información obtenida
             $nuevouser = new Usuario($usuarioData['id_usuario'], $usuarioData['username'], $usuarioData['password'], $usuarioData['nombre'], $usuarioData['apellido'], $usuarioData['email'], $usuarioData['fecha_nacim'], $usuarioData['rol'], $usuarioData['id_monitor'], $usuarioData['imc']);
@@ -171,6 +180,11 @@ class LoginController {
                 $password = hash("sha256", $prePassword);
 
                 $actualizaPassword = $this->service->actualizarPassword($email, $password);
+
+                if ($actualizaPassword == null) {
+                    header("Location: http://localhost/Gym_MarFit/views/MantenimientoView.php");
+                    exit();
+                }
 
                 if ($actualizaPassword['mensaje'] == 'El email no esta registrado') {
                     header("Location: ./index.php?controller=Login&action=mostrarLogin&login=false");

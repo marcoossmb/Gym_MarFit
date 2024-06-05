@@ -71,7 +71,7 @@ class ClaseView {
                     </thead>
                     <tbody>
                         <?php foreach ($clasesPorUsuario as $clase) { ?>
-                            <tr id="fila-<?php echo $clase['id_clase']; ?>">
+                            <tr id="fila-<?php echo $clase['id_clase']; ?>-<?php echo $clase['id_usuario']; ?>-<?php echo $clase['id_reserva']; ?>">
                                 <td><?php echo $clase['title']; ?></td>
                                 <td><?php echo $clase['tipo']; ?></td>
                                 <td><?php echo $clase['descripcion']; ?></td>
@@ -79,7 +79,7 @@ class ClaseView {
                                 <td><?php echo $clase['start']; ?></td>
                                 <td><?php echo substr($clase['hora_clase'], 0, 5); ?></td>
                                 <td>
-                                    <button class="btn btn-primary" id="boton-<?php echo $clase['id_clase']; ?>">
+                                    <button class="btn btn-primary" id="boton-<?php echo $clase['id_clase']; ?>-<?php echo $clase['id_usuario']; ?>-<?php echo $clase['id_reserva']; ?>">
                                         <i class="fa-solid fa-qrcode"></i>
                                     </button>
                                 </td>

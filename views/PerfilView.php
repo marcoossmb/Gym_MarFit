@@ -120,9 +120,13 @@ class PerfilView {
         <div class="container mt-5">
             <h2 style="margin-top: 150px">Stock del material</h2>
             <canvas id="grafica" class="mt-3"></canvas>
-            
+
             <h2 style="margin-top: 125px" class="mb-5">Alumnos por clase</h2>
-            <canvas id="grafica_alum" class="mb-5"></canvas>            
+            <canvas id="grafica_alum" class="mb-5"></canvas>
+
+            <div class="d-flex justify-content-between mb-5">
+                <a href="./index.php" class="bg-dark p-2 text-light rounded">Volver</a>
+            </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
         <script src="./js/graficas.js"></script>
