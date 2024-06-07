@@ -65,10 +65,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             return '';
 
         const today = new Date();
-        const endOfJune = new Date(today.getFullYear(), 5, 30);
+        const startOfAugust = new Date(today.getFullYear(), 7, 1);
 
         let dateOptions = '<p>Selecciona una fecha:</p> <select class="border-0 select-day mr-5" name="date" id="date" required><option selected disabled value="">Fecha</option>';
-        for (let d = new Date(today); d <= endOfJune; d.setDate(d.getDate() + 1)) {
+        for (let d = new Date(today); d <= startOfAugust; d.setDate(d.getDate() + 1)) {
             const day = d.getDay();
             if (validDays.includes(day)) {
                 const dateStr = d.toISOString().split('T')[0]; //Para coger la fecha excluyendo la hora

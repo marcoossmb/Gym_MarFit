@@ -42,7 +42,7 @@ class ClaseView {
         ?>        
         <div class="container mt-5">
             <div id='calendar' class="w-75 mx-auto class-mt" data-id-monitor="<?php echo $id_monitor; ?>"></div>
-
+            <a href="./index.php" class="btn btn-dark mt-5 mb-5 ml-5">Volver</a>
         </div>
         <script src="./js/calendar.js"></script>
         <?php
