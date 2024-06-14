@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             if (validDays.includes(day)) {
                 const dateStr = d.toISOString().split('T')[0]; //Para coger la fecha excluyendo la hora
                 const dayName = getDayName(day); // Para obtener el nombre del día
-                dateOptions += `<option value="${dateStr}">${dateStr} ➡️ ${dayName}</option>`;
+                const formattedDate = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+                dateOptions += `<option value="${dateStr}">${formattedDate} ➡️ ${dayName}</option>`;
             }
         }
         dateOptions += '</select>';

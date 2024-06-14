@@ -174,3 +174,9 @@ input[type="submit"] {
     z-index:0;
     box-shadow: 0 0 15px 9px #00000096;
 }
+
+.small-pass{
+    position: absolute;
+    top: 405px;
+    right: 100px;
+}

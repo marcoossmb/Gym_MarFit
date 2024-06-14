@@ -56,16 +56,24 @@ class LoginView {
                             <input type="text" placeholder="Apellido" class="mb-0" name="apellido" required>
                         </div>
                     </div>
-                    <input type="date" placeholder="Fecha de Nacimiento" name="date" required>
+                    <?php
+                    $diaHoy = new DateTime();
+                    $diaHoy->modify('-18 years');
+                    $minDate = $diaHoy->format('Y-m-d');
+                    ?>
+                    <input type="date" name="date" min="0000-00-00" max="<?php echo $minDate; ?>" required>
                     <input type="email" placeholder="Email" name="email" required>
                     <div class="password-input-container">
-                        <input type="password" placeholder="Contraseña" name="password" required id="register-password">
+                        <input type="password" placeholder="Contraseña" name="password" required id="register-password" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}">
                         <button type="button" id="password-toggle-btn-register" class="border-0 bg-white">
                             <i class="fa-regular fa-eye"></i>
                         </button>
                     </div>
-                    <input type="submit" value="Registrarse">
-                    <a href="./index.php">Volver</a>
+                    <div class="small-pass"><small>La contraseña debe tener 8 caracteres, una letra mayúscula, una minúscula y un número.</small></div>
+                    <div class="mt-5">
+                        <input type="submit" value="Registrarse">
+                        <a href="./index.php">Volver</a>
+                    </div>
                 </form>
 
             </div>

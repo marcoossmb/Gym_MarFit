@@ -48,7 +48,8 @@ class PerfilView {
                                 </form>
                                 <?php
                             } else {
-                                echo $nuevouser->getFecha_nacim();
+                                $fecha_nacim = date("d/m/Y", strtotime($nuevouser->getFecha_nacim()));
+                                echo $fecha_nacim;
                             }
                             ?>
                         </span>

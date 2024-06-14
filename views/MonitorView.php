@@ -54,15 +54,20 @@ class MonitorView {
                             <input type="text" name="apellido" placeholder="Apellido"><br>
 
                         </div>
+                        <?php
+                        $diaHoy = new DateTime();
+                        $diaHoy->modify('-18 years');
+                        $minDate = $diaHoy->format('Y-m-d');
+                        ?>
                         <div class="m-3">
-                            <input type="date" class="mb-3 w-100" name="fecha_nac" placeholder="Fecha de Nacimiento"><br>                          
+                            <input type="date" class="mb-3 w-100" name="fecha_nac" min="0000-00-00" max="<?php echo $minDate; ?>"><br>
                             <input type="email" name="email" placeholder="Email"><br>
                         </div>
                         <div class="m-3">
-                            <input type="password" class="mb-3" name="password" placeholder="Contraseña" required><br>
+                            <input type="password" class="mb-3" name="password" placeholder="Contraseña" required minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}">
                             <button class="border-0 bg-primary text-white p-1 rounded w-100" type="submit">Añadir</button>
                         </div>
-
+                        <small class="mt-3">La contraseña debe tener 8 caracteres, una letra mayúscula, una minúscula y un número.</small>                            
                     </form>
                 </div>
                 <a href="./index.php" class="btn btn-dark mb-5">Volver</a>
